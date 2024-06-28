@@ -56,10 +56,33 @@ error의 원인: 10보다 작은 수에 대한 처리가 안된다.
 
 ---
 
-## Step 2
+## Step 2 - greedy 최적화 생각 후
+
+1. 동전의 최소 개수를 얻으려면 숫자가 가장 큰 5원부터 갯수를 얻는다.
+2. 5로 나누어 떨어진다면 count.
+3. 5로 나누어 떨어지지 않으면... 2씩 빼주고 count에 1을 더해준다.
 
 ```python
+import sys
+input = sys.stdin.readline
 
+n = int(input().rstrip())
+ans = 0
+while True:
+    if n%5 == 0:
+        ans += n//5
+        break
+    else:
+        n-=2
+        ans+=1
+
+    if n<0:
+        break
+
+if n<0:
+    print(-1)
+else:
+    print(ans)	
 ```
 
 

@@ -7,23 +7,24 @@
 예를 들어, 거스름돈이 15원이면 5원짜리 3개를, 거스름돈이 14원이면 5원짜리 2개와 2원짜리 2개로 총 4개를, 거스름돈이 13원이면 5원짜리 1개와 2원짜리 4개로 총 5개를 주어야 동전의 개수가 최소가 된다.
 """
 
-# 3, 6,
-def main(money):
-    if money < 5:
-        coin_5 = money // 5 - 1
-        coin_2 = money % 5 // 2
-        print(coin_5, coin_2)
-        pass
+import sys
+
+input = sys.stdin.readline
+
+n = int(input())
+ans = 0
+while True:
+    if n % 5 == 0:
+        ans += n // 5
+        break
     else:
-        coin_5 = money // 5
-        coin_2 = money % 5 // 2
-        print(coin_5, coin_2)
-        pass
-    return coin_5 + coin_2
+        n -= 2
+        ans += 1
 
+    if n < 0:
+        break
 
-
-if __name__ == "__main__":
-    money = int(input())
-    result = main(money)
-    print(result)
+if n < 0:
+    print(-1)
+else:
+    print(ans)
