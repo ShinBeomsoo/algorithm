@@ -1,17 +1,7 @@
 """
 1074 Z 탐색
+z 서치에 너무 많은 시간을 할애하였다.
 """
-
-N = int(input())  # N는 1<= <=15
-r = int(input())
-c = int(input())
-
-# 4분할로 나누는 함수
-# z로 탐색하는 함수
-# 탐색하는 과정에서 숫자를 채워놓자!
-# 원하는 행렬의 값을 matrix[r][c]로 구하자!
-
-
 def z_search(position, r, c):
     position_r, position_c = position
     # 찾았다!
@@ -75,5 +65,32 @@ def main(r, c):
     return count
 
 
-count = main(r, c)
+"""
+--------------------------------------------------------
+정답
+시간복잡도: O(logN) => 매트릭스가 계속 반으로 줄어든다.
+"""
+N, r, c = map(int, input().split())
+
+count = 0
+
+while N != 0:
+    N -= 1
+    # 1사분면
+    if r < 2**N and c < 2**N:
+        count += (2**N) * (2**N) * 0  # 2^N * 2^N * 0
+    # 2사분면
+    elif r < 2**N and 2**N <= c:
+        count += (2**N) * (2**N) * 1
+        c -= 2**N
+        pass
+    # 3분면
+    elif 2**N <= r and c < 2**N:
+        count += (2**N) * (2**N) * 2
+        r -= 2**N
+    # 4분면
+    else:
+        count += (2**N) * (2**N) * 3
+        r -= 2**N
+        c -= 2**N
 print(count)
