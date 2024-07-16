@@ -4,7 +4,7 @@
 """
 
 # 처음 답
-board = input()
+board = input()  # input is similar with scanf
 # O(n) O(n) O(n) => O(3n) => O(n)
 if board.count("X") % 2 != 0:
     print(-1)
