@@ -27,3 +27,5 @@ if __name__ == '__main__':
     binary.reverse()
     print(binary)
 
+a = []
+a.append(1)
